@@ -1,0 +1,108 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<title> AJAX 03 </title> 
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+</head> 
+
+<body>
+
+	<header> 
+		<h1> AJAX Example 03 - Get Authors with JQuery AJAX </h1>
+	</header> 
+
+	<form id="frmInputs">
+
+		<div class="field">
+		    <label for="fname">First</label>
+		    <input type="text" name="f_name" placeholder="">
+		</div>
+
+		<div class="field">
+		    <label for="lname">Last</label>
+		    <input type="text" name="l_name" placeholder="">
+		</div>
+
+		<button type="button" onclick="processForm()"> test </button> 
+
+	</form> 
+
+	<script>
+		function build_table(_data)
+		{
+			var json_arr; 
+			var json; 
+
+			try{
+				json_arr = JSON.parse(_data); 
+			}catch(ex){
+				alert(ex.message);  
+			}
+
+			var i; 
+			var tbl_data = "<table border=1>"; 
+
+
+
+			for(i = 0; i < json_arr.length; i++)
+			{
+				var row = json_arr[i]; 
+
+				tbl_data += "<tr>"; // start row 
+				
+				tbl_data += "<td>"; 
+				tbl_data += row.au_fname; 
+				tbl_data += "</td>"; 
+
+				tbl_data += "<td>"; 
+				tbl_data += row.au_lname; 
+				tbl_data += "</td>"; 
+
+				tbl_data += "</tr>"; // end row 
+			}
+
+			tbl_data += "</table>"; 
+
+			document.getElementById("output").innerHTML = tbl_data; // show returned HMTL
+		}
+
+		function processForm(){
+
+			var form = $("#frmInputs"); 
+			var frm_data = $(form).serialize(); 
+
+		    	$.ajax({
+				statusCode: {
+				    404: function(){ alert("Authors Not Found"); }
+				},
+				async: true,
+				method:"POST",
+				cache: false,
+				url: "get_author_info_json.php",
+				data: { frm_data },
+				error: function(jqXHR, textStatus, errorThrown)
+				{
+				    alert(errorThrown); 
+				},
+			    success: function(data) {  build_table(data) }
+		    	}); // end ajax 
+
+		}
+
+	</script> 
+
+</body> 
+
+</html>
+
+
+
+
+
+
