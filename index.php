@@ -1,30 +1,42 @@
 <?php
 
-//require_once  'index.html' // this loads the index.html file 
+// https://www.youtube.com/watch?v=2_dqDpSSpsc
 
-require_once "router.php"; 
+declare ( strict_types =1 );
 
-// register routes
+require_once ('router.php'); // instead of composer 
+require_once ('authorController.php');
+//use App; 
 
-route('/', function(){
-    return "Hello world"; 
+$router = new router(); 
+
+$router->get("/", function (){
+
+    echo 'Home page'; 
 }); 
 
-route('/about', function(){
-    return "welcome to about"; 
+$router->get('/about', function (){
+
+
+    echo 'about page'; 
+
 }); 
 
-route('/authors', function(){
+$router->get('/authors', function (){
+
+    authorController::authors(); 
+
+}); 
+
+$router->addNotFoundHandler( function ()
+{
+    require_once '404.html'; 
+}
+); 
 
 
-    return "Welcome to the authors page";
-});
-
-$action = $_SERVER['REQUEST_URI'];
-
-
-dispatch($action); 
-
+$router->run(); 
 
 
 ?>
+
