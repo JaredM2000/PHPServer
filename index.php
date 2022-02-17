@@ -11,8 +11,7 @@ require_once ('authorController.php');
 $router = new router(); 
 
 $router->get("/", function (){
-
-    echo 'home page';
+    require_once 'author.html';
 }); 
 
 $router->get('/about', function (){
