@@ -12,7 +12,7 @@ $router = new router();
 
 $router->get("/", function (){
 
-    echo 'Home page'; 
+    echo 'home page';
 }); 
 
 $router->get('/about', function (){
@@ -24,8 +24,7 @@ $router->get('/about', function (){
 
 $router->get('/authors', function (){
 
-    authorController::authors(); 
-
+    authorController::authors();
 }); 
 
 $router->addNotFoundHandler( function ()

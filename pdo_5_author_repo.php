@@ -52,12 +52,4 @@ class authorRepo implements IRepository{
     public function remove($id){}
 }
 
-
-
-$auRepo = new authorRepo($h);
-
-$au = $auRepo->find('172-32-1176'); 
-
-echo $au['au_fname']; 
-
 ?>
