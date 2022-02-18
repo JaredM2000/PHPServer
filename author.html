@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>jQuery AJAX Submit Form</title>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script>
+// https://www.geeksforgeeks.org/how-to-submit-a-form-using-ajax-in-jquery/
+$(document).ready(function(){
+    $("form").on("submit", function(event){
+        event.preventDefault(); // use AJAX
+ 
+        var formValues= $(this).serialize();
+
+        $.ajax({
+                method: "GET",
+                url: '/author', // buggy
+                data: formValues ,
+                cache: false,
+                success: function(data) {
+                      
+                    // Ajax call completed successfully
+
+                    $('#result').html(data);
+
+                   // alert(data);
+                },
+                error: function(data) {
+                      
+                    // Some error in ajax call
+                    alert(data);
+                }
+            });
+    });
+});
+</script>
+
+</head>
+<body>
+    <form>
+        <p>
+            <label>Name:</label>
+            <input type="text" name="id">
+        </p>
+
+        <input type="submit" value="submit">
+    </form>
+    <div id="result"></div>
+</body>
+</html>
