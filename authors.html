@@ -7,21 +7,27 @@
 <script>
 // https://www.geeksforgeeks.org/how-to-submit-a-form-using-ajax-in-jquery/
 $(document).ready(function(){                   // website is loaded
-    $("form").on("submit", function(event){     // submit button pressed
-        event.preventDefault(); // use AJAX
- 
-        var formValues= $(this).serialize();    // i think this gets the values. yeah
-
-        $.ajax({
+    console.log("hi");
+    $.ajax({
                 method: "GET",
                 url: '/authors', // buggy
-                data: formValues ,
                 cache: false,
                 success: function(data) {
                       
                     // Ajax call completed successfully
 
+                    authors = JSON.parse(data); 
+
+
+                    // loop through each author and build 
+
+                    table += "<tr>"; 
+
+
+                    table += "</tr>"
+
                     $('#result').html(data);
+
 
                    // alert(data);
                 },
@@ -30,21 +36,17 @@ $(document).ready(function(){                   // website is loaded
                     // Some error in ajax call
                     alert(data);
                 }
-            });
     });
+    console.log("bye");
 });
 </script>
 
 </head>
-<body>
-    <form>
-        <p>
-            <label>Name:</label>
-            <input type="text" name="id">
-        </p>
 
-        <input type="submit" value="submit">
-    </form>
-    <div id="result"></div>
+<body>
+    <div id="result">
+
+    </div>
 </body>
+
 </html>
