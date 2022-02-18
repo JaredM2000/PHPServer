@@ -2,6 +2,7 @@
 
 include_once 'IRepo.php'; 
 
+
 $h = require 'pubs_connect.php';
 
 class authorRepo implements IRepository{
@@ -48,7 +49,18 @@ class authorRepo implements IRepository{
 
         return $authors;
     }
-    public function update($item){}
+    public function update($item){
+        require_once 'model.php';
+
+        $sql = 'UPDATE authors SET au_fname= :aufname WHERE au_id= :auid';
+
+        $stmt = $this->handle->prepare($sql);
+        
+        $stmt->bindParam(':aufname', $item->fname, PDO::PARAM_STR); 
+        $stmt->bindParam(':auid', $item->id(), PDO::PARAM_STR); 
+
+        $stmt->execute(); 
+    }
     public function remove($id){}
 }
 
