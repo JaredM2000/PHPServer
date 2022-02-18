@@ -11,7 +11,7 @@ require_once ('authorController.php');
 $router = new router(); 
 
 $router->get("/", function (){
-    require_once 'author.html';
+    require_once 'authors.html';
 }); 
 
 $router->get('/about', function (){
@@ -19,6 +19,11 @@ $router->get('/about', function (){
 
     echo 'about page'; 
 
+}); 
+
+$router->get('/author', function ($id){
+
+    authorController::author($id);
 }); 
 
 $router->get('/authors', function (){
