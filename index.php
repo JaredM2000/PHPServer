@@ -15,14 +15,10 @@ $router->get("/", function (){
 }); 
 
 $router->get('/about', function (){
-
-
     echo 'about page'; 
-
 }); 
 
-$router->get('/author', function ($id){
-
+$router->get('/authorg', function ($id){
     authorController::author($id);
 }); 
 
