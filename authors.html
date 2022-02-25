@@ -18,14 +18,18 @@ $(document).ready(function(){                   // website is loaded
 
                     authors = JSON.parse(data); 
 
+                    console.log("tableStart");
                     $.each(authors, function(key, value){
-                                $('#tbody').append(
+                        console.log("intable");
+                                $('#authorTable').append(
                                         '<tr>' 
                                             + '<td>' + value.au_id + '</td>'
                                             + '<td>' + value.au_fname + '</td>'
                                             + '<td>' + value.au_lname + '</td>'
-                                            + '</tr>')
+                                            + '<td>' +'<button> </button>'> + '</td>'
+                                            + '</tr>');
                                             });
+                                            console.log("bye");
 
 
                     //$('#result').html(data);
@@ -37,7 +41,7 @@ $(document).ready(function(){                   // website is loaded
                     alert(data);
                 }
     });
-    console.log("bye");
+    
 });
 </script>
 
@@ -47,11 +51,12 @@ $(document).ready(function(){                   // website is loaded
     <div>
         <table>
             <thead>
-                <td>id</td>
-                <td>fname</td>
-                <td>lname</td>
+                <tr>
+                    <th>id</th>
+                    <th>fname</th>
+                    <th>lname</th>
             </thead>
-            <tbody>
+            <tbody id="authorTable">
                 <!-- stuff goes here-->
             </tbody>
         </table>
