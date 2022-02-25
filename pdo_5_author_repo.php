@@ -25,7 +25,6 @@ class authorRepo implements IRepository{
 
         $sql = 'SELECT * FROM authors WHERE au_id = :auid'; 
 
-        
         $stmt = $this->handle->prepare($sql); 
         
         $stmt->bindParam(':auid', $id, PDO::PARAM_STR); 
