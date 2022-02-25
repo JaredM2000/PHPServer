@@ -20,18 +20,15 @@ $(document).ready(function(){                   // website is loaded
 
                     console.log("tableStart");
                     $.each(authors, function(key, value){
-                        console.log("intable");
-                                $('#authorTable').append(
+                        $('#authorTable').append(
                                         '<tr>' 
                                             + '<td>' + value.au_id + '</td>'
                                             + '<td>' + value.au_fname + '</td>'
                                             + '<td>' + value.au_lname + '</td>'
-                                            + '<td>' +'<button> </button>'> + '</td>'
+                                            + '<td>' + '<button onclick="editClick(' + value + ')"> Edit Author </button>' + '</td>'
                                             + '</tr>');
                                             });
                                             console.log("bye");
-
-
                     //$('#result').html(data);
                    // alert(data);
                 },
@@ -43,7 +40,41 @@ $(document).ready(function(){                   // website is loaded
     });
     
 });
+
+function editClick(authorData)
+{
+    alert('Hello world!');
+}
 </script>
+
+<style>
+    table {
+      font-family: arial, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    td {
+        border: 2px solid #1b1835;
+    }
+    
+    th {
+        border: 2px solid #1b1835;
+        color: #ffffff;
+         background-color: #2052db;
+         text-align: left;
+         padding: 4px;
+    }
+    
+    tr:nth-child(odd) {
+      background-color: #e6eaff;
+    }
+
+    tr:nth-child(even) {
+      background-color: #cad8ff;
+    }
+    
+    </style>
 
 </head>
 
@@ -52,9 +83,11 @@ $(document).ready(function(){                   // website is loaded
         <table>
             <thead>
                 <tr>
-                    <th>id</th>
-                    <th>fname</th>
-                    <th>lname</th>
+                    <th>ID</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Options</th>
+                </tr>
             </thead>
             <tbody id="authorTable">
                 <!-- stuff goes here-->
