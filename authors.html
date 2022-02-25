@@ -25,7 +25,8 @@ $(document).ready(function(){                   // website is loaded
                                             + '<td>' + value.au_id + '</td>'
                                             + '<td>' + value.au_fname + '</td>'
                                             + '<td>' + value.au_lname + '</td>'
-                                            + '<td>' + '<button onclick="editClick(' + value + ')"> Edit Author </button>' + '</td>'
+                                            + '<td>' + '<button onclick="editClick(\''+ value +'\')"> Edit Author </button>' + '</td>'
+                                            //+ '<td>' + '<button onclick="alert(\'hahaha\');"> Edit Author </button>' + '</td>'
                                             + '</tr>');
                                             });
                                             console.log("bye");
@@ -43,7 +44,7 @@ $(document).ready(function(){                   // website is loaded
 
 function editClick(authorData)
 {
-    alert('Hello world!');
+    alert('You clicked on ' + authorData.au_fname + ' ' + authorData.au_lname + '. Their ID is ' + au_id + '.');
 }
 </script>
 
