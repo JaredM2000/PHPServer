@@ -18,17 +18,17 @@ $(document).ready(function(){                   // website is loaded
 
                     authors = JSON.parse(data); 
 
+                    $.each(authors, function(key, value){
+                                $('#tbody').append(
+                                        '<tr>' 
+                                            + '<td>' + value.au_id + '</td>'
+                                            + '<td>' + value.au_fname + '</td>'
+                                            + '<td>' + value.au_lname + '</td>'
+                                            + '</tr>')
+                                            });
 
-                    // loop through each author and build 
 
-                    table += "<tr>"; 
-
-
-                    table += "</tr>"
-
-                    $('#result').html(data);
-
-
+                    //$('#result').html(data);
                    // alert(data);
                 },
                 error: function(data) {
@@ -44,9 +44,19 @@ $(document).ready(function(){                   // website is loaded
 </head>
 
 <body>
+    <div>
+        <table>
+            <thead>
+                <td>id</td>
+                <td>fname</td>
+                <td>lname</td>
+            </thead>
+            <tbody>
+                <!-- stuff goes here-->
+            </tbody>
+        </table>
+    </div>
     <div id="result">
-
     </div>
 </body>
-
 </html>
