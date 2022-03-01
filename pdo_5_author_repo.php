@@ -34,8 +34,7 @@ class authorRepo implements IRepository{
         // FETCH_ASSOC = index by column name 
         $author = $stmt->fetchAll(PDO::FETCH_ASSOC)[0]; // get array 
         
-        return $author; 
-
+        return $author;
     }
 
     public function findAll(){
