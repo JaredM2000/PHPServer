@@ -7,31 +7,31 @@
 <script>
 // https://www.geeksforgeeks.org/how-to-submit-a-form-using-ajax-in-jquery/
 $(document).ready(function(){                   // website is loaded
-    /*$.ajax({
+
+    const qs = window.location.search;
+
+    const parms = new URLSearchParams(qs);
+
+    const aid = parms.get(`aid`);
+
+    //event.preventDefault();
+
+    $.ajax({
                 method: "GET",
-                url: '/author',
+                url: '/authorg',
                 cache: false,
                 success: function(data) {
                     // Ajax call completed successfully
 
-
-                    $('#authorTable').append(
-                                        '<tr>' 
-                                            + '<td>' + value.au_id + '</td>'
-                                            + '<td>' + value.au_fname + '</td>'
-                                            + '<td>' + value.au_lname + '</td>'
-                                            + '<td>' + '<button onclick="editClick(\''+ value.au_id +'\')"> Edit Author </button>' + '</td>'
-                                            //+ '<td>' + '<button onclick="alert(\'hahaha\');"> Edit Author </button>' + '</td>'
-                                            + '</tr>');
-                                            });
-                                            console.log("bye");
+                    author = JSON.parse(data);
+                    console.log(author);
                 },
                 error: function(data) {
                       
                     // Some error in ajax call
                     alert(data);
                 }
-    });*/
+    });
     
 });
 
@@ -43,8 +43,15 @@ $(document).ready(function(){                   // website is loaded
 </head>
 
 <body>
-    hi
+    this DUMB author
     <div id="result">
+        <br>
+        <label>First Name:</label><br>
+        <input type="text" id="fname" name="fname"><br><br>
+        <label>Last Name:</label><br>
+        <input type="text" id="lname" name="lname"><br><br>
+        <label>Phone #:</label><br>
+        <input type="text" id="pnumber" name="pnumber"><br><br>
     </div>
 </body>
 </html>
