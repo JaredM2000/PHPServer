@@ -9,9 +9,7 @@
 $(document).ready(function(){                   // website is loaded
 
     const qs = window.location.search;
-
     const parms = new URLSearchParams(qs);
-
     const aid = parms.get(`aid`);
 
     //event.preventDefault();
@@ -20,6 +18,7 @@ $(document).ready(function(){                   // website is loaded
                 method: "GET",
                 url: '/authorg',
                 cache: false,
+                data : {'id' : aid},
                 success: function(data) {
                     // Ajax call completed successfully
 
@@ -52,6 +51,7 @@ $(document).ready(function(){                   // website is loaded
         <input type="text" id="lname" name="lname"><br><br>
         <label>Phone #:</label><br>
         <input type="text" id="pnumber" name="pnumber"><br><br>
+        <button onclick=applyClick(value.au_id)> Apply Changes </button>
     </div>
 </body>
 </html>
