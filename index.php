@@ -23,8 +23,7 @@ $router->get('/author', function (){
 }); 
 
 $router->get('/authorg', function ($id){
-    echo $id;
-    authorController::author($id);
+    authorController::author($id['id']);
 }); 
 
 $router->get('/authors', function (){
