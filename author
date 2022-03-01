@@ -21,9 +21,14 @@ $(document).ready(function(){                   // website is loaded
                 data : {'id' : aid},
                 success: function(data) {
                     // Ajax call completed successfully
-
+                    
                     author = JSON.parse(data);
-                    console.log(author);
+
+                    document.getElementById("fancytitle").innerHTML = 'Data for ' + author.au_fname + ' ' + author.au_lname;
+                    document.getElementById("fname").value = author.au_fname;
+                    document.getElementById("lname").value = author.au_lname;
+                    document.getElementById("pnumber").value = author.phone;
+                    document.getElementById("adr").value = author.address;
                 },
                 error: function(data) {
                       
@@ -42,8 +47,8 @@ $(document).ready(function(){                   // website is loaded
 </head>
 
 <body>
-    this DUMB author
-    <div id="result">
+    <b><label id="fancytitle"> </label></b>
+    <div>
         <br>
         <label>First Name:</label><br>
         <input type="text" id="fname" name="fname"><br><br>
@@ -51,6 +56,8 @@ $(document).ready(function(){                   // website is loaded
         <input type="text" id="lname" name="lname"><br><br>
         <label>Phone #:</label><br>
         <input type="text" id="pnumber" name="pnumber"><br><br>
+        <label>Address:</label><br>
+        <input type="text" id="adr" name="adr"><br><br>
         <button onclick=applyClick(value.au_id)> Apply Changes </button>
     </div>
 </body>
