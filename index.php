@@ -18,6 +18,10 @@ $router->get('/about', function (){
     echo 'about page'; 
 }); 
 
+$router->get('/author', function (){
+    require_once 'author.html'; 
+}); 
+
 $router->get('/authorg', function ($id){
     authorController::author($id);
 }); 
