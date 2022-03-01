@@ -7,20 +7,15 @@
 <script>
 // https://www.geeksforgeeks.org/how-to-submit-a-form-using-ajax-in-jquery/
 $(document).ready(function(){                   // website is loaded
-    console.log("hi");
-    $.ajax({
+    /*$.ajax({
                 method: "GET",
-                url: '/authors', // buggy
+                url: '/author',
                 cache: false,
                 success: function(data) {
-                      
                     // Ajax call completed successfully
 
-                    authors = JSON.parse(data); 
 
-                    console.log("tableStart");
-                    $.each(authors, function(key, value){
-                        $('#authorTable').append(
+                    $('#authorTable').append(
                                         '<tr>' 
                                             + '<td>' + value.au_id + '</td>'
                                             + '<td>' + value.au_fname + '</td>'
@@ -30,74 +25,25 @@ $(document).ready(function(){                   // website is loaded
                                             + '</tr>');
                                             });
                                             console.log("bye");
-                    //$('#result').html(data);
-                   // alert(data);
                 },
                 error: function(data) {
                       
                     // Some error in ajax call
                     alert(data);
                 }
-    });
+    });*/
     
 });
 
-function editClick(authorData)
-{
-    alert('ID is ' + authorData + '.');
-    var $url = `author?aid=${authorData}`;
 
-    window.location = $url;
-}
 </script>
 
-<style>
-    table {
-      font-family: arial, sans-serif;
-      border-collapse: collapse;
-      width: 100%;
-    }
-
-    td {
-        border: 2px solid #1b1835;
-    }
-    
-    th {
-        border: 2px solid #1b1835;
-        color: #ffffff;
-         background-color: #2052db;
-         text-align: left;
-         padding: 4px;
-    }
-    
-    tr:nth-child(odd) {
-      background-color: #e6eaff;
-    }
-
-    tr:nth-child(even) {
-      background-color: #cad8ff;
-    }
-    
-    </style>
+<style></style>
 
 </head>
 
 <body>
-    <div>
-        <table>
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Options</th>
-                </tr>
-            </thead>
-            <tbody id="authorTable">
-                <!-- stuff goes here-->
-            </tbody>
-        </table>
-    </div>
+    hi
     <div id="result">
     </div>
 </body>
