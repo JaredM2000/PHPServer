@@ -31,6 +31,17 @@ $router->get('/authors', function (){
     authorController::authors();
 }); 
 
+$router->post('/authorp', function ($author){
+
+   // echo var_dump($author['au']); 
+
+    $a = json_decode($author['au']); 
+
+    echo $a->id;  
+
+    authorController::updateAuthor($a);
+}); 
+
 $router->addNotFoundHandler( function ()
 {
     require_once '404.html'; 

@@ -17,6 +17,18 @@ public static function author($id)
     echo json_encode($author);  
 }
 
+public static function updateAuthor($au)
+{
+    // your path will be different 
+    $h = require (__DIR__ . '/pubs_connect.php');
+
+    $auRepo = new authorRepo($h);
+
+    $author = $auRepo->update($au); 
+
+    echo json_encode($author);  
+}
+
 public static function authors()
 {
     // your path will be different 

@@ -11,6 +11,7 @@ class Router{
     private $notFoundHandler; 
     private const METHOD_POST = 'POST';
     private const METHOD_GET = 'GET'; 
+    private const METHOD_PUT = 'PUT'; 
 
     public function get(string $path, $handler) : void
     {
@@ -20,8 +21,14 @@ class Router{
 
     public function post(string $path, $handler) : void 
     {
-        $this->addHandler(self::ETHOD_POST, $path, $handler); 
+        $this->addHandler(self::METHOD_POST, $path, $handler); 
     }
+
+    public function put(string $path, $handler) : void 
+    {
+        $this->addHandler(self::METHOD_PUT, $path, $handler); 
+    }
+    
 
     public function addNotFoundHandler($handler) :void 
     {

@@ -50,12 +50,15 @@ class authorRepo implements IRepository{
     public function update($item){
         require_once 'model.php';
 
-        $sql = 'UPDATE authors SET au_fname= :aufname WHERE au_id= :auid';
+        $sql = 'UPDATE authors SET au_fname= :aufname, au_lname= :aulname, phone= :aunumber, address= :auaddress WHERE au_id= :auid';
 
         $stmt = $this->handle->prepare($sql);
         
+        $stmt->bindParam(':auid', $item->id, PDO::PARAM_STR); 
         $stmt->bindParam(':aufname', $item->fname, PDO::PARAM_STR); 
-        $stmt->bindParam(':auid', $item->id(), PDO::PARAM_STR); 
+        $stmt->bindParam(':aulname', $item->lname, PDO::PARAM_STR); 
+        $stmt->bindParam(':aunumber', $item->number, PDO::PARAM_STR); 
+        $stmt->bindParam(':auaddress', $item->address, PDO::PARAM_STR); 
 
         $stmt->execute(); 
     }

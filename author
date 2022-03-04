@@ -5,6 +5,7 @@
 <title>jQuery AJAX Submit Form</title>
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script>
+var authorID;
 // https://www.geeksforgeeks.org/how-to-submit-a-form-using-ajax-in-jquery/
 $(document).ready(function(){                   // website is loaded
 
@@ -23,7 +24,8 @@ $(document).ready(function(){                   // website is loaded
                     // Ajax call completed successfully
                     
                     author = JSON.parse(data);
-
+                    
+                    authorID = author.au_id;
                     document.getElementById("fancytitle").innerHTML = 'Data for ' + author.au_fname + ' ' + author.au_lname;
                     document.getElementById("fname").value = author.au_fname;
                     document.getElementById("lname").value = author.au_lname;
@@ -39,6 +41,49 @@ $(document).ready(function(){                   // website is loaded
     
 });
 
+class au
+{
+    constructor(id, fname, lname, number, address)
+    {
+        this.id = id;
+        this.fname = fname;
+        this.lname = lname;
+        this.number = number;
+        this.address = address;
+    }
+}
+
+
+function applyClick()
+{
+    var fn = document.getElementById("fname").value;
+    var ln = document.getElementById("lname").value;
+    var num = document.getElementById("pnumber").value;
+    var adr = document.getElementById("adr").value;
+    
+    var author = new au(authorID, fn, ln, num, adr);
+
+    var auJSON = JSON.stringify(author);
+
+    $.ajax({
+                method: "POST",
+                url: '/authorp',
+                cache: false,
+                data : {'au' : auJSON},
+                success: function(data) {
+                    // Ajax call completed successfully
+                    console.log(data);
+                    var $url = `/`;
+                    window.location = $url;
+                },
+                error: function(data) {
+                      
+                    // Some error in ajax call
+                    alert(data);
+                }
+    });
+
+}
 
 </script>
 
@@ -58,7 +103,7 @@ $(document).ready(function(){                   // website is loaded
         <input type="text" id="pnumber" name="pnumber"><br><br>
         <label>Address:</label><br>
         <input type="text" id="adr" name="adr"><br><br>
-        <button onclick=applyClick(value.au_id)> Apply Changes </button>
+        <button onclick=applyClick()> Apply Changes </button>
     </div>
 </body>
 </html>
